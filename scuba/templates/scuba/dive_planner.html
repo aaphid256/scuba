@@ -1,0 +1,49 @@
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+
+    <h1>Dive Planner</h1>
+
+    </select>
+    <br>
+    <br>
+    <h5>Backgass</h5>
+    <label for="cuFt">Cu Ft</label>
+    <input type="number" id="cuFt" step="0.1" placeholder="Cu Ft" required>
+
+    <label for="pressure">Pressure</label>
+    <input type="number" id="pressure" step="0.1" placeholder="Pressure" required>
+    <span id="psiPerCuFt"></span>
+
+    <label for="fillPressure">Fill Pressure</label>
+    <input type="number" id="fillPressure" step="0.1" placeholder="Fill Pressure" required>
+    <span id="actCuFt"></span>
+    <br><br>
+    <label for="decoGasses">How many deco gasses?</label>
+    <select id="decoGasses">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    </select>
+
+    <div id="firstSwitchDepthContainer"></div>
+    <div id="secondSwitchDepthContainer"></div>
+    <br>
+    <div id="decoGassesContainer"></div>
+
+    <table id="divePlanTable">
+        <!-- Table will be dynamically generated using JavaScript -->
+    </table>
+    <br>
+    <br>
+    <h3>Calculate MOD</h3>
+    <label for="o2Level">O2 Level:</label>
+    <input type="number" id="o2Level" min="21" max="100" step="1" placeholder="Enter O2 Level" required>
+    <div id="modOutput"></div>
+    <br>
+    <br>
+    <h3>Best Mix</h3>
+    <label for="depthInput">Enter Depth (feet):</label>
+    <input type="number" id="depthInput" placeholder="Enter depth..." min="13" max="186" required>
+    <p id="bestMixOutput"></p>
+
+{% endblock %}

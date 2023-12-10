@@ -23,3 +23,10 @@ class Destination(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class DiverProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    functional_sac_rate = models.DecimalField(max_digits=3, decimal_places=1, default=1.0)
+    deco_sac_rate = models.DecimalField(max_digits=3, decimal_places=1, default=1.0)
+    min_gas_sac = models.DecimalField(max_digits=3, decimal_places=1, default=1.0)

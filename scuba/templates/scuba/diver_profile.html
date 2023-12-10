@@ -1,0 +1,33 @@
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+{% load custom_filters %}
+
+    <h2>Diver Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Profile</button>
+    </form>
+
+    <h2>Saved Diver Profile</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Functional SAC Rate</th>
+                <th>Deco SAC Rate</th>
+                <th>Min Gas SAC</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profile in profiles %}
+            <tr>
+                <td>{{ profile.functional_sac_rate }}</td>
+                <td>{{ profile.deco_sac_rate }}</td>
+                <td>{{ profile.min_gas_sac }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

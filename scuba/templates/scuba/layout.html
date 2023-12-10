@@ -24,7 +24,7 @@
         <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="{% url 'diver_profile' %}"
               ><strong>{{ user.username }}</strong></a
             >
           </li>
@@ -38,7 +38,7 @@
             <a class="nav-link" href="{% url 'destination_list' %}">My Destinations</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Following</a>
+            <a class="nav-link" href="{% url 'dive_planner' %}">Dive Planner</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
