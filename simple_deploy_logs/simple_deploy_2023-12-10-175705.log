@@ -1,0 +1,35 @@
+2023-12-10 17:57:05,589 INFO: 
+2023-12-10 17:57:05,589 INFO: Logging run of `manage.py simple_deploy`...
+2023-12-10 17:57:05,589 INFO: 
+2023-12-10 17:57:05,589 INFO: CLI args: {'verbosity': 1, 'settings': None, 'pythonpath': None, 'traceback': False, 'no_color': False, 'force_color': False, 'platform': 'heroku', 'automate_all': False, 'no_logging': False, 'ignore_unclean_git': False, 'deployed_project_name': '', 'region': 'us-3.platform.sh', 'unit_testing': False, 'integration_testing': False}
+2023-12-10 17:57:05,589 INFO:   Deployment target: heroku
+2023-12-10 17:57:05,592 INFO:   Local platform identified: macOS
+2023-12-10 17:57:05,593 INFO:   Project name: scuba_log
+2023-12-10 17:57:05,593 INFO:   Project root: /Users/tony/Documents/CS Stuff/cs33a/cs33a Submitions/FinalProject/final_project
+2023-12-10 17:57:05,593 INFO:   Found .git dir at /Users/tony/Documents/CS Stuff/cs33a/cs33a Submitions/FinalProject/final_project.
+2023-12-10 17:57:05,629 INFO: 
+2023-12-10 17:57:05,630 INFO: git status:
+2023-12-10 17:57:05,630 INFO: On branch main
+2023-12-10 17:57:05,630 INFO: Your branch is ahead of 'origin/main' by 1 commit.
+2023-12-10 17:57:05,630 INFO:   (use "git push" to publish your local commits)
+2023-12-10 17:57:05,630 INFO: 
+2023-12-10 17:57:05,630 INFO: Changes to be committed:
+2023-12-10 17:57:05,630 INFO:   (use "git restore --staged <file>..." to unstage)
+2023-12-10 17:57:05,630 INFO: 	new file:   simple_deploy_logs/simple_deploy_2023-12-10-175509.log
+2023-12-10 17:57:05,630 INFO: 
+2023-12-10 17:57:05,630 INFO: Untracked files:
+2023-12-10 17:57:05,630 INFO:   (use "git add <file>..." to include in what will be committed)
+2023-12-10 17:57:05,630 INFO: 	simple_deploy_logs/simple_deploy_2023-12-10-175705.log
+2023-12-10 17:57:05,630 INFO: 
+2023-12-10 17:57:05,696 INFO: 
+2023-12-10 17:57:05,696 INFO: SimpleDeployCommandError:
+2023-12-10 17:57:05,697 INFO: 
+2023-12-10 17:57:05,697 INFO: The output of `git status` indicates that you have uncommitted changes.
+2023-12-10 17:57:05,697 INFO: 
+2023-12-10 17:57:05,697 INFO: We highly recommend you commit all changes before running simple_deploy, so
+2023-12-10 17:57:05,697 INFO: you can easily undo configuration changes if deployment doesn't work, or if you
+2023-12-10 17:57:05,697 INFO: wish to deploy to a different platform.
+2023-12-10 17:57:05,697 INFO: 
+2023-12-10 17:57:05,697 INFO: Please commit all changes and then run simple_deploy again. If you really wish
+2023-12-10 17:57:05,697 INFO: to continue without committing current changes, you can use
+2023-12-10 17:57:05,697 INFO: the --ignore-unclean-git flag.
