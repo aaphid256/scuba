@@ -1,3 +1,6 @@
+# Django Admin Page Configuration
+
+# Import necessary modules
 from django.contrib import admin
 from .models import Dive, Destination, DiverProfile
 

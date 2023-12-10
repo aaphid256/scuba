@@ -1,13 +1,19 @@
+<!-- Registration Page Template -->
 {% extends "scuba/layout.html" %} {% block body %}
 
+<!-- Heading for Registration -->
 <h2>Register</h2>
 
+<!-- Display a message if available -->
 {% if message %}
 <div>{{ message }}</div>
 {% endif %}
 
+<!-- Registration Form using POST method, action points to 'register' URL -->
 <form action="{% url 'register' %}" method="post">
   {% csrf_token %}
+
+  <!-- Input field for Username -->
   <div class="form-group">
     <input
       class="form-control"
@@ -17,6 +23,8 @@
       placeholder="Username"
     />
   </div>
+
+  <!-- Input field for Email -->
   <div class="form-group">
     <input
       class="form-control"
@@ -25,6 +33,8 @@
       placeholder="Email Address"
     />
   </div>
+
+  <!-- Input field for Password -->
   <div class="form-group">
     <input
       class="form-control"
@@ -33,6 +43,8 @@
       placeholder="Password"
     />
   </div>
+
+  <!-- Input field for Confirm Password -->
   <div class="form-group">
     <input
       class="form-control"
@@ -41,9 +53,12 @@
       placeholder="Confirm Password"
     />
   </div>
+
+  <!-- Submit Button to Register -->
   <input class="btn btn-primary" type="submit" value="Register" />
 </form>
 
+<!-- Link to Log In Page -->
 Already have an account? <a href="{% url 'login' %}">Log In here.</a>
 
 {% endblock %}

@@ -1,3 +1,5 @@
+# Django Views
+
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
@@ -6,11 +8,14 @@ from django.urls import reverse
 from django.forms import formset_factory
 
 from .models import User, Dive, Destination, DiverProfile
-from .forms import DiveForm, DestinationForm, DiverProfileForm, DivePlannerForm, BackgasForm, DecoGasForm
+from .forms import DiveForm, DestinationForm, DiverProfileForm
 
 
 def index(request):
+    # Retrieve and display user's dives
     dives = Dive.objects.filter(user=request.user).order_by("-pk")
+
+    # Dive form submission
     if request.method == 'POST':
         form = DiveForm(request.POST)
         if form.is_valid():
@@ -24,12 +29,12 @@ def index(request):
     return render(request, 'scuba/index.html', {
         'dives': dives,
         'form': form
-        })
+    })
 
 
 def login_view(request):
+    # Handle user login
     if request.method == "POST":
-
         # Attempt to sign user in
         username = request.POST["username"]
         password = request.POST["password"]
@@ -48,11 +53,13 @@ def login_view(request):
 
 
 def logout_view(request):
+    # Logout
     logout(request)
     return HttpResponseRedirect(reverse("login"))
 
 
 def register(request):
+    # User registration
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
@@ -80,14 +87,18 @@ def register(request):
 
 
 def dive_detail(request, pk):
+    # Display details of specific dive
     dive = get_object_or_404(Dive, pk=pk)
     return render(request, 'scuba/dive_detail.html', {
         'dive': dive
-        })
+    })
 
 
 def destination_list(request):
-    destinations = Destination.objects.filter(user=request.user).order_by("-pk")
+    # Display user's destinations and handle destination form
+    destinations = Destination.objects.filter(
+        user=request.user).order_by("-pk")
+    
     if request.method == 'POST':
         form = DestinationForm(request.POST)
         if form.is_valid():
@@ -101,16 +112,18 @@ def destination_list(request):
     return render(request, 'scuba/destination_list.html', {
         'destinations': destinations,
         'form': form
-        })
+    })
+
 
 def destination_detail(request, pk):
     destination = get_object_or_404(Destination, pk=pk)
     return render(request, 'scuba/destination_detail.html', {
         'destination': destination
-        })
+    })
 
 
 def diver_profile(request):
+    # Display details of specific destination
     profiles = DiverProfile.objects.all()
     profile, created = DiverProfile.objects.get_or_create(user=request.user)
 
@@ -123,63 +136,11 @@ def diver_profile(request):
         form = DiverProfileForm(instance=profile)
 
     return render(request, 'scuba/diver_profile.html', {
-        'form': form, 
+        'form': form,
         'profiles': profiles
-        })
-
+    })
 
 
 def dive_planner(request):
-    BackgasFormSet = formset_factory(BackgasForm, extra=0)
-    DecoGasFormSet = formset_factory(DecoGasForm, extra=0)
-
-    if request.method == 'POST':
-        dive_form = DivePlannerForm(request.POST)
-        backgas_formset = BackgasFormSet(request.POST)
-        deco_gas_formset = DecoGasFormSet(request.POST)
-
-        if dive_form.is_valid() and backgas_formset.is_valid() and deco_gas_formset.is_valid():
-            # Process the form data and calculate Total Backgas Required
-            dive = dive_form.save(commit=False)
-            dive.user = request.user
-            dive.save()
-
-            total_backgas_required = (
-                dive.backgas_set
-                .annotate(depth_time=F('depth') * F('time') * Cast('diver_profile__functional_sac_rate', FloatField()))
-                .aggregate(total_backgas_required=Sum('depth_time'))
-            )['total_backgas_required'] or 0
-
-            # ... other calculations ...
-
-            return render(request, 'scuba/dive_planner.html', {
-                'dive_form': dive_form, 
-                'backgas_formset': backgas_formset, 
-                'deco_gas_formset': deco_gas_formset,
-                'total_backgas_required': total_backgas_required,
-                # ... other calculated values ...
-            })
-    
-    else:
-        # Handle GET request here
-        dive_form = DivePlannerForm()
-        backgas_formset = BackgasFormSet()
-        deco_gas_formset = DecoGasFormSet()
-
-        return render(request,'scuba/dive_planner.html',{
-            'dive_form': dive_form, 
-            'backgas_formset': backgas_formset, 
-            'deco_gas_formset': deco_gas_formset,
-        })
-
-
-
-def get_sac(request):
-    profile, created = DiverProfile.objects.get_or_create(user=request.user)
-
-    return JsonResponse({
-        'functional_sac_rate': profile.functional_sac_rate,
-        'deco_sac_rate': profile.deco_sac_rate,
-        'min_gas_sac': profile.min_gas_sac
-    })
-
+    # Display dive planner page
+    return render(request, 'scuba/dive_planner.html', {})

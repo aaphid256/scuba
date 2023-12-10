@@ -1,24 +1,41 @@
-{% extends "scuba/layout.html" %} 
-{% block body %} 
+{% extends "scuba/layout.html" %} {% block body %}
 
+<!-- Display heading for Destination List -->
+<h1>Destination List</h1>
 
-    <h1>Destination List</h1>
-  <!-- Button to toggle the new destination form -->
-  <button id="showNewDestinationForm">Add New Destination</button>
+<!-- Button to toggle new destination form -->
+<button id="showNewDestinationForm">Add New Destination</button>
 
-  <!-- Include the new destination form (initially hidden) -->
-  <div id="newDestinationForm" style="display: none">
-      {% include 'scuba/new_Destination_form.html' %}
-  </div>
-  
-    {% if destinations %}
-    <ul>
-        {% for destination in destinations %}
-        <li><a href="{% url 'destination_detail' pk=destination.pk %}">{{ destination.name }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No destinations available.</p>
-    {% endif %}
+<!-- Container for new destination form (initially hidden) -->
+<div id="newDestinationForm" style="display: none">
+  <!-- Add New Destination Form -->
+  <h2>Add New Destination</h2>
 
-{% endblock %}
+  <!-- Form using POST method, action points to 'destination_list' URL -->
+  <form method="post" action="{% url 'destination_list' %}">
+    {% csrf_token %}
+
+    <!-- Display form fields as paragraphs -->
+    {{ form.as_p }}
+
+    <!-- Submit Button to Add Destination -->
+    <button type="submit">Add Destination</button>
+  </form>
+</div>
+
+{% if destinations %}
+<!-- Display list of destinations -->
+<ul>
+  {% for destination in destinations %}
+  <!-- Create list item with link to destination detail page -->
+  <li>
+    <a href="{% url 'destination_detail' pk=destination.pk %}"
+      >{{ destination.name }}</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<!-- Display message if no destinations available -->
+<p>No destinations available.</p>
+{% endif %} {% endblock %}

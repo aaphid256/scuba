@@ -1,13 +1,18 @@
 {% extends "scuba/layout.html" %} {% block body %}
 
+<!-- Login form -->
 <h2>Login</h2>
 
+<!-- Display message if present -->
 {% if message %}
 <div>{{ message }}</div>
 {% endif %}
 
+<!-- Login form using POST method -->
 <form action="{% url 'login' %}" method="post">
   {% csrf_token %}
+
+  <!-- Username input field -->
   <div class="form-group">
     <input
       autofocus
@@ -17,6 +22,8 @@
       placeholder="Username"
     />
   </div>
+
+  <!-- Password input field -->
   <div class="form-group">
     <input
       class="form-control"
@@ -25,9 +32,12 @@
       placeholder="Password"
     />
   </div>
+
+  <!-- Submit button -->
   <input class="btn btn-primary" type="submit" value="Login" />
 </form>
 
+<!-- Registration link -->
 Don't have an account? <a href="{% url 'register' %}">Register here.</a>
 
 {% endblock %}

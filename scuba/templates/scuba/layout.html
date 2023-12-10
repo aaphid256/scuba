@@ -3,39 +3,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Title block -->
     <title>{% block title %}SCUBA{% endblock %}</title>
+
+    <!-- Viewport settings -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap stylesheet -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+
+    <!-- Custom stylesheet -->
     <link href="{% static 'scuba/styles.css' %}" rel="stylesheet" />
+
+    <!-- Script block -->
     {% block script %}
-    
     <script src="{% static 'scuba/dive.js' %}"></script>
     {% endblock %}
   </head>
   <body>
+    <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">scuba</a>
 
+      <!-- Navigation links -->
       <div>
         <ul class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
+          <!-- Display when user authenticated -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'diver_profile' %}"
               ><strong>{{ user.username }}</strong></a
             >
           </li>
-          {% endif %}
-
-          {% if user.is_authenticated %}
+          {% endif %} {% if user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'index' %}">My Dives</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'destination_list' %}">My Destinations</a>
+            <a class="nav-link" href="{% url 'destination_list' %}"
+              >My Destinations</a
+            >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'dive_planner' %}">Dive Planner</a>
@@ -44,6 +56,7 @@
             <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
           </li>
           {% else %}
+          <!-- Display when user not authenticated -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Log In</a>
           </li>
@@ -55,6 +68,7 @@
       </div>
     </nav>
 
+    <!-- Body content -->
     <div class="body">{% block body %} {% endblock %}</div>
   </body>
 </html>

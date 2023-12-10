@@ -1,32 +1,44 @@
-{% extends "scuba/layout.html" %} 
-{% block body %} 
-{% load custom_filters %}
+{% extends "scuba/layout.html" %} {% block body %} {% load custom_filters %}
 
+<!-- Dive list section -->
+<h1>Dive List</h1>
 
-  <h1>Dive List</h1>
-    <!-- Button to toggle the new dive form -->
-    <button id="toggleNewDiveForm">Add New Dive</button>
+<!-- Button to toggle new dive form -->
+<button id="toggleNewDiveForm">Add New Dive</button>
 
-    <!-- Include the new dive form (initially hidden) -->
-    <div id="newDiveForm" style="display: none">
-        {% include 'scuba/new_dive_form.html' %}
-    </div>
+<!-- Include new dive form (initially hidden) -->
+<div id="newDiveForm" style="display: none">
+  <!-- Add New Dive Form -->
+  <h2>Add New Dive</h2>
 
-  {% if dives %}
-    <ul>
-      {% for dive in dives %}
-        <li>
-          <a href="{% url 'dive_detail' pk=dive.pk %}">{{ dive.location }}</a>
-          - Date: {{ dive.date }}, Depth: {{ dive.depth }}, Duration: {{ dive.duration }}
-        </li>
-      {% endfor %}
-    </ul>
+  <!-- Form using POST method, action points to 'index' URL -->
+  <form method="post" action="{% url 'index' %}">
+    {% csrf_token %}
 
-    <p><strong>Total Dive Time:</strong> {{ dives|total_dive_time }}</p>
+    <!-- Display form fields as paragraphs -->
+    {{ form.as_p }}
 
-  {% else %}
-    <p>No dives available.</p>
-  {% endif %}
+    <!-- Submit Button to Add Dive -->
+    <button type="submit">Add Dive</button>
+  </form>
+</div>
 
+<!-- Display dives -->
+{% if dives %}
+<ul>
+  {% for dive in dives %}
+  <li>
+    <a href="{% url 'dive_detail' pk=dive.pk %}">{{ dive.location }}</a>
+    - Date: {{ dive.date }}, Depth: {{ dive.depth }}, Duration: {{ dive.duration
+    }}
+  </li>
+  {% endfor %}
+</ul>
 
-{% endblock %}
+<!-- Display total dive time -->
+<p>Total Dive Time: {{ dives|total_dive_time }}</p>
+
+{% else %}
+<!-- Display message if no dives available -->
+<p>No dives available.</p>
+{% endif %} {% endblock %}
