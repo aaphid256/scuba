@@ -110,6 +110,8 @@ Screenshots of the website that show the dive log, dive detail, destination log,
 2. This will output the best EAN to use for your dive.
 
 ## Tech Stack / Built With
+(See `design.md` for an exhaustive explanation over each file)
+
 1. [Python 3](https://www.python.org/download/releases/3.0/) - One of the programming languages used.
 
 2. [HTML](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics) - The markup language used to display info in the web browser.
