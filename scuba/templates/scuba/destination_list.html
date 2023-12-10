@@ -1,0 +1,24 @@
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+
+
+    <h1>Destination List</h1>
+  <!-- Button to toggle the new destination form -->
+  <button id="showNewDestinationForm">Add New Destination</button>
+
+  <!-- Include the new destination form (initially hidden) -->
+  <div id="newDestinationForm" style="display: none">
+      {% include 'scuba/new_Destination_form.html' %}
+  </div>
+  
+    {% if destinations %}
+    <ul>
+        {% for destination in destinations %}
+        <li><a href="{% url 'destination_detail' pk=destination.pk %}">{{ destination.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No destinations available.</p>
+    {% endif %}
+
+{% endblock %}

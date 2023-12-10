@@ -4,3 +4,22 @@ from django.db import models
 
 class User(AbstractUser):
     pass
+
+class Dive(models.Model):
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    location = models.CharField(max_length=100)
+    date = models.DateField()
+    depth = models.DecimalField(max_digits=5, decimal_places=2)
+    duration = models.DurationField()
+    notes = models.TextField(blank=True)
+
+
+class Destination(models.Model):
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    notes = models.TextField(blank=True)
+    dives = models.ManyToManyField('Dive', related_name='destinations', blank=True)
+
+    def __str__(self):
+        return self.name

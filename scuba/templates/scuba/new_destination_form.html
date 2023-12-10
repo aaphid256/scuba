@@ -1,0 +1,6 @@
+<h2>Add New Destination</h2>
+<form method="post" action="{% url 'destination_list' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Destination</button>
+</form>

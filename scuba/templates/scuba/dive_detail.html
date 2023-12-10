@@ -1,0 +1,12 @@
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+
+    <h1>{{ dive.location }}</h1>
+    <p><strong>Date:</strong> {{ dive.date }}</p>
+    <p><strong>Depth:</strong> {{ dive.depth }}</p>
+    <p><strong>Duration:</strong> {{ dive.duration }}</p>
+    <p><strong>Notes:</strong> {{ dive.notes }}</p>
+
+    <a href="{% url 'index' %}">Back to Dive List</a>
+
+{% endblock %}

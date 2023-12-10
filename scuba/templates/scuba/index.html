@@ -1,1 +1,32 @@
-{% extends "scuba/layout.html" %} {% block body %} TODO {% endblock %}
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+{% load custom_filters %}
+
+
+  <h1>Dive List</h1>
+    <!-- Button to toggle the new dive form -->
+    <button id="toggleNewDiveForm">Add New Dive</button>
+
+    <!-- Include the new dive form (initially hidden) -->
+    <div id="newDiveForm" style="display: none">
+        {% include 'scuba/new_dive_form.html' %}
+    </div>
+
+  {% if dives %}
+    <ul>
+      {% for dive in dives %}
+        <li>
+          <a href="{% url 'dive_detail' pk=dive.pk %}">{{ dive.location }}</a>
+          - Date: {{ dive.date }}, Depth: {{ dive.depth }}, Duration: {{ dive.duration }}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <p><strong>Total Dive Time:</strong> {{ dives|total_dive_time }}</p>
+
+  {% else %}
+    <p>No dives available.</p>
+  {% endif %}
+
+
+{% endblock %}

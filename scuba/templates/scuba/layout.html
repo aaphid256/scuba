@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>{% block title %}Social scuba{% endblock %}</title>
+    <title>{% block title %}SCUBA{% endblock %}</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -11,6 +11,10 @@
       crossorigin="anonymous"
     />
     <link href="{% static 'scuba/styles.css' %}" rel="stylesheet" />
+    {% block script %}
+    
+    <script src="{% static 'scuba/dive.js' %}"></script>
+    {% endblock %}
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -25,10 +29,14 @@
             >
           </li>
           {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}">All Posts</a>
-          </li>
+
           {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">My Dives</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'destination_list' %}">My Destinations</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Following</a>
           </li>

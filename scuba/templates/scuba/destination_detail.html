@@ -1,0 +1,21 @@
+{% extends "scuba/layout.html" %} 
+{% block body %} 
+
+    <h1>{{ destination.name }}</h1>
+    <p>{{ destination.description }}</p>
+    <p><strong>Notes:</strong> {{ destination.notes }}</p>
+
+    <!--{% if destination.dives.all %}
+    <h2>Dives at this Destination</h2>
+    <ul>
+        {% for dive in destination.dives.all %}
+        <li><a href="{% url 'dive_detail' pk=dive.pk %}">{{ dive.location }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No dives recorded at this destination.</p>
+    {% endif %}-->
+
+    <a href="{% url 'destination_list' %}">Back to Destination List</a>
+
+{% endblock %}
