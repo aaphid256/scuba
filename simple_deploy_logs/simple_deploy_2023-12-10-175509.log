@@ -1,0 +1,38 @@
+2023-12-10 17:55:09,883 INFO: 
+2023-12-10 17:55:09,884 INFO: Logging run of `manage.py simple_deploy`...
+2023-12-10 17:55:09,884 INFO: Created /Users/tony/Documents/CS Stuff/cs33a/cs33a Submitions/FinalProject/final_project/simple_deploy_logs.
+2023-12-10 17:55:09,884 INFO: 
+2023-12-10 17:55:09,884 INFO: CLI args: {'verbosity': 1, 'settings': None, 'pythonpath': None, 'traceback': False, 'no_color': False, 'force_color': False, 'platform': 'heroku', 'automate_all': False, 'no_logging': False, 'ignore_unclean_git': False, 'deployed_project_name': '', 'region': 'us-3.platform.sh', 'unit_testing': False, 'integration_testing': False}
+2023-12-10 17:55:09,884 INFO:   Deployment target: heroku
+2023-12-10 17:55:09,887 INFO:   Local platform identified: macOS
+2023-12-10 17:55:09,887 INFO:   Project name: scuba_log
+2023-12-10 17:55:09,887 INFO:   Project root: /Users/tony/Documents/CS Stuff/cs33a/cs33a Submitions/FinalProject/final_project
+2023-12-10 17:55:09,887 INFO:   Found .git dir at /Users/tony/Documents/CS Stuff/cs33a/cs33a Submitions/FinalProject/final_project.
+2023-12-10 17:55:09,928 INFO: 
+2023-12-10 17:55:09,928 INFO: git status:
+2023-12-10 17:55:09,928 INFO: On branch main
+2023-12-10 17:55:09,928 INFO: Your branch is up to date with 'origin/main'.
+2023-12-10 17:55:09,928 INFO: 
+2023-12-10 17:55:09,928 INFO: Changes not staged for commit:
+2023-12-10 17:55:09,928 INFO:   (use "git add <file>..." to update what will be committed)
+2023-12-10 17:55:09,928 INFO:   (use "git restore <file>..." to discard changes in working directory)
+2023-12-10 17:55:09,928 INFO: 	modified:   scuba_log/__pycache__/settings.cpython-311.pyc
+2023-12-10 17:55:09,928 INFO: 	modified:   scuba_log/settings.py
+2023-12-10 17:55:09,928 INFO: 
+2023-12-10 17:55:09,928 INFO: Untracked files:
+2023-12-10 17:55:09,928 INFO:   (use "git add <file>..." to include in what will be committed)
+2023-12-10 17:55:09,929 INFO: 	simple_deploy_logs/
+2023-12-10 17:55:09,929 INFO: 
+2023-12-10 17:55:09,929 INFO: no changes added to commit (use "git add" and/or "git commit -a")
+2023-12-10 17:55:09,966 INFO: 
+2023-12-10 17:55:09,967 INFO: SimpleDeployCommandError:
+2023-12-10 17:55:09,967 INFO: 
+2023-12-10 17:55:09,967 INFO: The output of `git status` indicates that you have uncommitted changes.
+2023-12-10 17:55:09,967 INFO: 
+2023-12-10 17:55:09,967 INFO: We highly recommend you commit all changes before running simple_deploy, so
+2023-12-10 17:55:09,967 INFO: you can easily undo configuration changes if deployment doesn't work, or if you
+2023-12-10 17:55:09,967 INFO: wish to deploy to a different platform.
+2023-12-10 17:55:09,967 INFO: 
+2023-12-10 17:55:09,967 INFO: Please commit all changes and then run simple_deploy again. If you really wish
+2023-12-10 17:55:09,967 INFO: to continue without committing current changes, you can use
+2023-12-10 17:55:09,967 INFO: the --ignore-unclean-git flag.
