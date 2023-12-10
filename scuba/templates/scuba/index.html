@@ -29,8 +29,7 @@
   {% for dive in dives %}
   <li>
     <a href="{% url 'dive_detail' pk=dive.pk %}">{{ dive.location }}</a>
-    - Date: {{ dive.date }}, Depth: {{ dive.depth }}, Duration: {{ dive.duration
-    }}
+    - Date: {{ dive.date }}, Depth: {{ dive.depth }}, Duration: {{ dive.duration }}
   </li>
   {% endfor %}
 </ul>
