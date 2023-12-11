@@ -1,6 +1,7 @@
 # SCUBA Log
 > This SCUBA Log project for cs33a is a Django website that allows users to keep track of SCUBA related activity and use some tools for dive planning. Users are able to log into the website and log individual dives as well as their travel experience. With the dive tools, users can calculate MOD, Best Mix, and tank gas levels in cubic feet. This final project was an opportunity to develop my own software using the skills I learned in cs33a.
 [Video Introduction](https://youtu.be/w1aJbZv79zE)
+SCUBA Log is up and running! [Click Here](https://scuba-926ff8578e20.herokuapp.com/) to create an account.
 
 
 ## Requirements  (Prerequisites)
